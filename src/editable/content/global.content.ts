@@ -3,48 +3,55 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const globalContent = {
   site: {
     name: slot4BrandConfig.siteName,
-    tagline: slot4BrandConfig.tagline || 'Independent reading platform',
+    tagline: slot4BrandConfig.tagline || 'Business discovery with a brighter point of view',
     domain: slot4BrandConfig.domain,
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Independent reading platform',
+    tagline: 'Playful directory for modern business discovery',
     primaryLinks: [
-      { label: 'Articles', href: '/articles' },
-      { label: 'Visuals', href: '/image-sharing' },
-      { label: 'Listings', href: '/listings' },
+      { label: 'Listings', href: '/listing' },
+      { label: 'Images', href: '/image' },
+      { label: 'Articles', href: '/article' },
       { label: 'Contact', href: '/contact' },
     ],
-    actions: {
-      primary: { label: 'Start exploring', href: '/' },
-      secondary: { label: 'Submit', href: '/contact' },
-    },
+    utilityLinks: ['Tax support', 'Help Center', 'Workspace', 'Sell with us'],
+    marketTabs: ['Directory', 'Collections', 'Suppliers', 'Worldwide'],
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
-    description: 'A connected publishing surface for articles, visuals, listings, profiles, bookmarks, and downloadable resources.',
+    tagline: 'Explore listings, visuals, resources, and business-ready posts',
+    description:
+      'A discovery-led marketplace experience for browsing business listings, image collections, guides, and supporting resources in one polished flow.',
     columns: [
       {
-        title: 'Explore',
+        title: 'About',
         links: [
-          { label: 'Articles', href: '/articles' },
-          { label: 'Listings', href: '/listings' },
-          { label: 'Images', href: '/image-sharing' },
-          { label: 'PDF Library', href: '/pdf' },
+          { label: 'Why choose us', href: '/about' },
+          { label: 'Publishing guide', href: '/create' },
+          { label: 'Contact support', href: '/contact' },
         ],
       },
       {
-        title: 'Site',
+        title: 'Business Tools',
         links: [
-          { label: 'About', href: '/about' },
-          { label: 'Contact', href: '/contact' },
+          { label: 'Listings', href: '/listing' },
+          { label: 'Images', href: '/image' },
+          { label: 'Documents', href: '/pdf' },
+        ],
+      },
+      {
+        title: 'Support',
+        links: [
+          { label: 'Help center', href: '/contact' },
+          { label: 'Login', href: '/login' },
+          { label: 'Sign up', href: '/signup' },
         ],
       },
     ],
-    bottomNote: 'Built for clean discovery and connected publishing.',
+    bottomNote: 'Designed for smooth browsing across public-facing business content.',
   },
   commonLabels: {
-    readMore: 'Read more',
+    readMore: 'Open details',
     viewAll: 'View all',
     explore: 'Explore',
     latest: 'Latest',

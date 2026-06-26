@@ -4,12 +4,21 @@ import { EditableFooter } from '@/editable/shell/EditableFooter'
 import { EditablePageMotion } from '@/editable/shell/EditablePageMotion'
 import { editableDesignContract as dc } from '@/editable/layouts/design-contract'
 
-export function EditableSiteShell({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function EditableSiteShell({
+  children,
+  className = '',
+  overlays,
+}: {
+  children: ReactNode
+  className?: string
+  overlays?: ReactNode
+}) {
   return (
     <div className={`editable-site-root ${dc.shell.page} flex min-h-screen flex-col ${className}`}>
       <EditableNavbar />
       <EditablePageMotion>{children}</EditablePageMotion>
       <EditableFooter />
+      {overlays}
     </div>
   )
 }
