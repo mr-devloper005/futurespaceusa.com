@@ -37,8 +37,8 @@ export function EditableNavbar() {
         <div className="grid gap-4 py-4 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center">
           <div className="flex items-center justify-between gap-4 lg:justify-start">
             <Link href="/" className="flex min-w-0 items-center gap-3">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.1rem] bg-[linear-gradient(135deg,var(--slot4-accent-soft),#ffffff)] text-sm font-extrabold text-[var(--slot4-accent)] shadow-[0_8px_22px_rgba(152,37,152,0.14)]">
-                FS
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.1rem] bg-[linear-gradient(135deg,var(--slot4-accent-soft),#ffffff)] shadow-[0_8px_22px_rgba(152,37,152,0.14)]">
+                <img src="/favicon.png?v=20260413" alt={SITE_CONFIG.name} className="h-8 w-8 object-contain" />
               </span>
               <span className="min-w-0">
                 <span className="editable-display block truncate text-[2rem] leading-none text-[var(--slot4-page-text)]">{SITE_CONFIG.name}</span>
