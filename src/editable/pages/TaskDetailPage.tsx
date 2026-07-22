@@ -154,10 +154,6 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
                   </div>
                 ) : null}
 
-                <div className="mt-8 rounded-[1.8rem] border border-[var(--tk-line)] bg-white p-6 shadow-[0_16px_40px_rgba(38,18,57,0.06)] sm:p-8">
-                  <BodyContent post={post} />
-                </div>
-
                 {task === 'article' ? <EditableArticleComments slug={post.slug} comments={comments} /> : null}
               </article>
 
@@ -198,10 +194,6 @@ function DetailMeta({ post, category }: { post: SitePost; category?: string }) {
       {category ? <span className="text-sm text-[var(--tk-muted)]">• {category}</span> : null}
     </div>
   )
-}
-
-function BodyContent({ post }: { post: SitePost }) {
-  return <div className="article-content max-w-none text-[1rem] leading-8 text-[var(--tk-text)]" dangerouslySetInnerHTML={{ __html: formatPlainText(getBody(post)) }} />
 }
 
 function ActionPanel({ website, phone, email }: { website?: string; phone?: string; email?: string }) {
