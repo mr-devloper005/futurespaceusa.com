@@ -11,7 +11,9 @@ export function EditableFooter() {
         <div className="grid gap-10">
           <div>
             <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--slot4-accent-soft)] text-lg font-bold text-[var(--slot4-accent)]">FS</span>
+              <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[var(--slot4-accent-soft)]">
+                <img src="/favicon.png?v=20260413" alt={SITE_CONFIG.name} className="h-8 w-8 object-contain" />
+              </span>
               <span className="editable-display text-[2rem] leading-none text-[var(--slot4-accent)]">{SITE_CONFIG.name}</span>
             </div>
           </div>
