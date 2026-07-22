@@ -58,35 +58,6 @@ const summaryText = (post: SitePost) => post.summary || asText(getContent(post).
 const stripHtml = (value: string) => value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 const categoryOf = (post: SitePost, fallback: string) => asText(getContent(post).category) || post.tags?.[0] || fallback
 
-const escapeHtml = (value: string) =>
-  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
-
-const safeUrl = (value: string) => (/^https?:\/\//i.test(value) ? value : '#')
-
-const linkifyMarkdown = (value: string) =>
-  value.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/gi, (_match, label, url) => `<a href="${safeUrl(url)}" target="_blank" rel="nofollow noopener noreferrer">${label}</a>`)
-
-const linkifyText = (value: string) =>
-  linkifyMarkdown(value).replace(/(^|[\s(>])((https?:\/\/)[^\s<)]+)/gi, (_match, prefix, url) => `${prefix}<a href="${safeUrl(url)}" target="_blank" rel="nofollow noopener noreferrer">${url}</a>`)
-
-const sanitizeHtml = (html: string) =>
-  html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-    .replace(/<(iframe|object|embed)[^>]*>[\s\S]*?<\/\1>/gi, '')
-    .replace(/\s+on\w+=("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
-    .replace(/(href|src)=(['"])javascript:[\s\S]*?\2/gi, '$1="#"')
-
-const formatPlainText = (raw: string) => {
-  const value = raw.trim()
-  if (!value) return ''
-  if (/<[a-z][\s\S]*>/i.test(value)) return sanitizeHtml(linkifyMarkdown(value))
-  return value
-    .split(/\n{2,}/)
-    .map((part) => `<p>${linkifyText(escapeHtml(part).replace(/\n/g, '<br />'))}</p>`)
-    .join('')
-}
-
 const hashStr = (value: string) => {
   let h = 0
   for (let i = 0; i < value.length; i += 1) h = (h * 31 + value.charCodeAt(i)) >>> 0
@@ -154,10 +125,6 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
                   </div>
                 ) : null}
 
-                <div className="mt-8 rounded-[1.8rem] border border-[var(--tk-line)] bg-white p-6 shadow-[0_16px_40px_rgba(38,18,57,0.06)] sm:p-8">
-                  <BodyContent post={post} />
-                </div>
-
                 {task === 'article' ? <EditableArticleComments slug={post.slug} comments={comments} /> : null}
               </article>
 
@@ -198,10 +165,6 @@ function DetailMeta({ post, category }: { post: SitePost; category?: string }) {
       {category ? <span className="text-sm text-[var(--tk-muted)]">• {category}</span> : null}
     </div>
   )
-}
-
-function BodyContent({ post }: { post: SitePost }) {
-  return <div className="article-content max-w-none text-[1rem] leading-8 text-[var(--tk-text)]" dangerouslySetInnerHTML={{ __html: formatPlainText(getBody(post)) }} />
 }
 
 function ActionPanel({ website, phone, email }: { website?: string; phone?: string; email?: string }) {
