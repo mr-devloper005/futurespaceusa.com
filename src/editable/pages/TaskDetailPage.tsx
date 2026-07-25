@@ -109,7 +109,7 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--tk-accent)]">{categoryOf(post, getTaskConfig(task)?.label || task)}</p>
                       <h1 className="editable-display mt-4 text-[2.6rem] leading-[0.95] sm:text-[3.8rem]">{post.title}</h1>
                       <DetailMeta post={post} category={categoryOf(post, '')} />
-                      <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--tk-muted)]">{stripHtml(summaryText(post) || getBody(post))}</p>
+                      <div className="mt-5 max-w-2xl text-base leading-7 text-[var(--tk-muted)] [&_a]:text-[var(--tk-accent)] [&_a]:underline [&_a:hover]:opacity-70" dangerouslySetInnerHTML={{ __html: summaryText(post) || getBody(post) }} />
                       <div className="mt-6 flex flex-wrap gap-3">
                         {price ? <span className="rounded-full bg-[var(--tk-accent-soft)] px-4 py-2 text-sm font-semibold text-[var(--tk-accent)]">{price}</span> : null}
                         {address ? <span className="rounded-full bg-[var(--tk-raised)] px-4 py-2 text-sm font-semibold text-[var(--tk-text)]">{address}</span> : null}
